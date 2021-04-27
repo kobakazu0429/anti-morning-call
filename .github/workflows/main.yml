@@ -1,0 +1,25 @@
+name: main
+
+on:
+  schedule:
+    #  08:45: UTC
+    - cron: "45 23 * * *"
+  workflow_dispatch:
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "13.14.0"
+      - run: yarn install
+      - run: yarn start
+        env:
+          USERNAME: ${{secrets.USERNAME}}
+          PASSWORD: ${{secrets.PASSWORD}}
+          SLACK_INCOMING_WEB_HOOK: ${{secrets.SLACK_INCOMING_WEB_HOOK}}
+          GYAZO_ACCESSTOKEN: ${{secrets.GYAZO_ACCESSTOKEN}}
