@@ -1,7 +1,7 @@
 import * as playwright from "playwright";
 import { ElementHandleForTag } from "playwright/types/structs";
 
-const DEBUG = true;
+const DEBUG = false;
 
 export class OutlookLite {
   private email: string;
