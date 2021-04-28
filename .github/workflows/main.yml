@@ -19,7 +19,7 @@ jobs:
       - run: yarn install
       - run: yarn start
         env:
-          USERNAME: ${{secrets.USERNAME}}
+          EMAIL: ${{secrets.EMAIL}}
           PASSWORD: ${{secrets.PASSWORD}}
           SLACK_INCOMING_WEB_HOOK: ${{secrets.SLACK_INCOMING_WEB_HOOK}}
           GYAZO_ACCESSTOKEN: ${{secrets.GYAZO_ACCESSTOKEN}}
