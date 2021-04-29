@@ -40,16 +40,16 @@ if ([0, 6].includes(day)) {
   const filename = `Anti Morning Call-${month}-${date}`;
 
   await outlook.answerForm();
-  await outlook.screenshotElement(".container", `${filename}-form`);
+  // await outlook.screenshotElement(".container", `${filename}-form`);
 
-  await outlook.submitForm();
-  await outlook.screenshotElement(".container", `${filename}-submit`);
+  // await outlook.submitForm();
+  // await outlook.screenshotElement(".container", `${filename}-submit`);
 
-  const formImgUrl = await uploadGyazo(`${filename}-form.png`);
-  const submitImgUrl = await uploadGyazo(`${filename}-submit.png`);
+  // const formImgUrl = await uploadGyazo(`${filename}-form.png`);
+  // const submitImgUrl = await uploadGyazo(`${filename}-submit.png`);
 
-  await sendToSlack({ url: formImgUrl, title: `${filename}-form` });
-  await sendToSlack({ url: submitImgUrl, title: `${filename}-submit` });
+  // await sendToSlack({ url: formImgUrl, title: `${filename}-form` });
+  // await sendToSlack({ url: submitImgUrl, title: `${filename}-submit` });
 
   await outlook.close();
   // await sleep(10000);
