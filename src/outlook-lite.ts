@@ -16,11 +16,7 @@ export class OutlookLite {
 
   public async init() {
     this.browser = await playwright["chromium"].launch({ headless: !DEBUG });
-    const context = await this.browser.newContext({
-      recordVideo: {
-        dir: ".",
-      },
-    });
+    const context = await this.browser.newContext();
     this.page = await context.newPage();
 
     console.log("Outlook.init: initialized");
