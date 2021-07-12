@@ -1,7 +1,7 @@
 import * as playwright from "playwright";
-import { ElementHandleForTag } from "playwright/types/structs";
+// import { ElementHandleForTag } from "playwright/types/structs";
 
-const DEBUG = false;
+const DEBUG = true;
 
 export class OutlookLite {
   private email: string;
@@ -35,7 +35,7 @@ export class OutlookLite {
     await this.page.fill('input[type="password"]', this.password);
     await this.page.click('input[type="submit"]');
 
-    await this.page.waitForSelector(".inner");
+    // await this.page.waitForSelector(".inner");
 
     if (await this.page.isVisible(`text=サインインの状態を維持しますか?`)) {
       await this.click(`text=はい`);
@@ -67,6 +67,7 @@ export class OutlookLite {
   }
 
   public async answerForm() {
+    await sleep(2000);
     // 寮
     await this.page.check(`//*[@id="frmRegForm_EnqAnswer"]/div[1]/label/input`);
     // 元気です
@@ -109,4 +110,10 @@ export class OutlookLite {
       console.log(`Outlook.click: failed, ${element}`);
     }
   }
+}
+
+async function sleep(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
